@@ -1,6 +1,12 @@
 # dotnet-lib
 dotnet library boilerplate
 
+## How to run tests
+```
+cd .\SimpleLib.Tests\
+dotnet restore
+dotnet test
+```
 
 ## GeoService
 
