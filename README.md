@@ -2,11 +2,11 @@
 dotnet library boilerplate
 
 
-##GeoService
+## GeoService
 
 Simple service to request geo info by IP
 
-###Usage
+### Usage
 ```C#
 var geoService = new GeoService();
 geoService.GetGeoDataByIP("134.234.3.2").Wait();
