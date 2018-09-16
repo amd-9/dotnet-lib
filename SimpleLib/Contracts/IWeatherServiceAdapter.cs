@@ -8,6 +8,6 @@ namespace SimpleLib.Contracts
 {
     public interface IWeatherServiceAdapter
     {
-        Task<List<WeatherInfo>> GetWeatherInfo(string location);
+        Task<string> GetWeatherInfo (string location);
     }
 }

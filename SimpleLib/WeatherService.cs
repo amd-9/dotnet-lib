@@ -15,7 +15,7 @@ namespace SimpleLib
             _serviceAdapter = serviceAdapter;
         }
 
-        public async Task<List<WeatherInfo>> GetWeatherData(string location)
+        public async Task<string> GetWeatherData(string location)
         {
             try
             {
