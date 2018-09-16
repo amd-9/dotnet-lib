@@ -1,12 +1,13 @@
-﻿using SimpleLib.Contracts;
-using SimpleLib.Models;
+﻿using SimpleLib.WeatherContracts;
 using System;
 using System.Collections.Generic;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace SimpleLib.Clients
+namespace SimpleLib.WeatherAdapters.Models
 {
+    [WeatherServiceAdapter(Name ="apixu")]
+    [WeatherServiceAddress(Address = "http://api.apixu.com/v1/")]
     public class ApixuWeatherServiceAdapter: IWeatherServiceAdapter
     {
         private readonly IWeatherClient _client;

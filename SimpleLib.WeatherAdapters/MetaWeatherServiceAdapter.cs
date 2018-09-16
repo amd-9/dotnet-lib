@@ -1,13 +1,15 @@
-﻿using SimpleLib.Contracts;
-using SimpleLib.Models;
+﻿using SimpleLib.WeatherAdapters.Models;
+using SimpleLib.WeatherContracts;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace SimpleLib.Clients
+namespace SimpleLib.WeatherAdapters
 {
+    [WeatherServiceAdapter(Name = "metaweather")]
+    [WeatherServiceAddress(Address = "https://www.metaweather.com/api/")]
     public class MetaWeatherServiceAdapter : IWeatherServiceAdapter
     {
         private readonly IWeatherClient _client;

@@ -1,5 +1,4 @@
-﻿using SimpleLib.Contracts;
-using SimpleLib.Models;
+﻿using SimpleLib.WeatherContracts;
 using System;
 using System.Collections.Generic;
 using System.Net.Http;
@@ -7,7 +6,7 @@ using System.Runtime.Serialization.Json;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace SimpleLib.Clients
+namespace SimpleLib.WeatherAdapters.Models
 {
     public class HttpWeatherClient : IWeatherClient
     {

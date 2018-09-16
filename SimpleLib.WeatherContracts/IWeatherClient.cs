@@ -2,9 +2,8 @@
 using System.Collections.Generic;
 using System.Text;
 using System.Threading.Tasks;
-using SimpleLib.Models;
 
-namespace SimpleLib.Contracts
+namespace SimpleLib.WeatherContracts
 {
     public interface IWeatherClient
     {

@@ -9,4 +9,9 @@
     <PackageReference Include="System.Runtime.Serialization.Primitives" Version="4.3.0" />
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\SimpleLib.WeatherAdapters\SimpleLib.WeatherAdapters.csproj" />
+    <ProjectReference Include="..\SimpleLib.WeatherContracts\SimpleLib.WeatherContracts.csproj" />
+  </ItemGroup>
+
 </Project>

@@ -1,9 +1,13 @@
 ﻿using Microsoft.Extensions.CommandLineUtils;
 using SimpleLib;
-using SimpleLib.Clients;
-using SimpleLib.Contracts;
+using SimpleLib.WeatherAdapters;
+using SimpleLib.WeatherAdapters.Models;
+using SimpleLib.WeatherContracts;
 using System;
 using System.Collections.Generic;
+using System.IO;
+using System.Linq;
+using System.Runtime.Loader;
 using System.Threading.Tasks;
 
 namespace weather
@@ -12,24 +16,13 @@ namespace weather
     {
         static void Main(string[] args)
         {
-            var httpWeatherClient = new HttpWeatherClient("https://www.metaweather.com/api/");
+            var dllFile = new FileInfo(@"..\SimpleLib.WeatherAdapters\bin\Debug\netcoreapp2.1\SimpleLib.WeatherAdapters.dll");
 
-            Dictionary<string, Func<IWeatherServiceAdapter>> adapters = new Dictionary<string, Func<IWeatherServiceAdapter>>()
-            {
-                {"metaweather",()=>
-                    {
-                        httpWeatherClient = new HttpWeatherClient("https://www.metaweather.com/api/");
-                        return new MetaWeatherServiceAdapter(httpWeatherClient);
+            var weatherAdapterType = typeof(IWeatherServiceAdapter);
+            var weatherAssembly = AssemblyLoadContext.Default.LoadFromAssemblyPath(dllFile.FullName);
+            var weatherAssemplyTypes =  weatherAssembly.GetTypes().Where(t => weatherAdapterType.IsAssignableFrom(t)).ToList();
 
-                    } },
-                {"apixu",()=>
-                    {
-                        httpWeatherClient = new HttpWeatherClient("http://api.apixu.com/v1/");
-                        return new ApixuWeatherServiceAdapter(httpWeatherClient);
-
-                     }}
-            };
-
+            var factory = new WeatherServiceFactory(weatherAssemplyTypes);
 
             CommandLineApplication commandLineApplication = new CommandLineApplication(throwOnUnexpectedArg: false);
 
@@ -53,7 +46,7 @@ namespace weather
             {
                 if (service.HasValue())
                 {
-                    var weatherServiceAdapter = adapters[service.Value()]();
+                    var weatherServiceAdapter = factory.CreateServiceAdapter(service.Value());
                     var weatherService = new WeatherService(weatherServiceAdapter);
                     var result = Task.Run(() => weatherService.GetWeatherData("london")).Result;
 

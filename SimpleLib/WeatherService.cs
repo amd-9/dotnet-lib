@@ -1,5 +1,5 @@
-﻿using SimpleLib.Contracts;
-using SimpleLib.Models;
+﻿using SimpleLib.Models;
+using SimpleLib.WeatherContracts;
 using System;
 using System.Collections.Generic;
 using System.Text;

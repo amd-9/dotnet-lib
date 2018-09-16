@@ -1,6 +1,6 @@
 ﻿using Moq;
 using NUnit.Framework;
-using SimpleLib.Contracts;
+using SimpleLib.WeatherContracts;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -23,6 +23,7 @@ namespace SimpleLib.Tests
 
         }
 
+        [Test]
         public async Task GetWeatherByLocation()
         {
             var location = "london";

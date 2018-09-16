@@ -10,6 +10,8 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\SimpleLib.WeatherAdapters\SimpleLib.WeatherAdapters.csproj" />
+    <ProjectReference Include="..\SimpleLib.WeatherContracts\SimpleLib.WeatherContracts.csproj" />
     <ProjectReference Include="..\SimpleLib\SimpleLib.csproj" />
   </ItemGroup>
 
